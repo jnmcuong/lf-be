@@ -1,9 +1,12 @@
 package me.cuongngo.lf.services;
 
-import me.cuongngo.lf.models.Role;
+import java.util.List;
+
+import me.cuongngo.lf.models.Task;
 
 public interface TaskService {
 
-	Iterable<Role> getAllRole();
+	List<Task> getAllTask(Long userId);
 
+	Task save(Task model);
 }

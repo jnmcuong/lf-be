@@ -2,6 +2,7 @@ package me.cuongngo.lf.models;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -95,4 +96,22 @@ public abstract class Entity implements Serializable {
 	private void setCreatedTime() {
 		this.createdAt = OffsetDateTime.now();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Entity other = (Entity) obj;
+		return Objects.equals(id, other.id);
+	}
+	
 }
